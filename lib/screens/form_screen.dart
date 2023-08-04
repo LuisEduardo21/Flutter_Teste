@@ -120,17 +120,24 @@ class _FormScreenState extends State<FormScreen> {
                       ),
                     ),
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           print(nameController.text);
                           print(difficultyController.text);
                           print(imageController.text);
                           ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text("Salvando as tarefas!")));
+                            const SnackBar(
+                                content: Text("Salvando as tarefas!")),
+                          );
+                          Navigator.pop(context);
                         }
                       },
-                      child: const Text("Adicionar"),
+                      child: const Text(
+                        "Adicionar",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ],
                 ),
