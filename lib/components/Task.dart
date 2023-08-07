@@ -5,15 +5,15 @@ class Task extends StatefulWidget {
   final String nome;
   final String foto;
   final int dificuldade;
-  const Task(this.nome, this.foto, this.dificuldade, {Key? key})
-      : super(key: key);
+  Task(this.nome, this.foto, this.dificuldade, {Key? key}) : super(key: key);
+
+  int nivel = 0;
 
   @override
   State<Task> createState() => _TaskState();
 }
 
 class _TaskState extends State<Task> {
-  int nivel = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -73,7 +73,7 @@ class _TaskState extends State<Task> {
                                 backgroundColor: Colors.blue),
                             onPressed: () {
                               setState(() {
-                                nivel++;
+                                widget.nivel++;
                               });
                             },
                             child: const Column(
@@ -105,7 +105,7 @@ class _TaskState extends State<Task> {
                         backgroundColor: Colors.black38,
                         color: Colors.white,
                         value: (widget.dificuldade > 0)
-                            ? (nivel / widget.dificuldade) / 15
+                            ? (widget.nivel / widget.dificuldade) / 15
                             : 1,
                       ),
                     ),
@@ -113,7 +113,7 @@ class _TaskState extends State<Task> {
                   Padding(
                       padding: const EdgeInsets.all(12),
                       child: Text(
-                        'Nivel : $nivel',
+                        'Nivel : ${widget.nivel}',
                         style:
                             const TextStyle(color: Colors.white, fontSize: 16),
                       ))
