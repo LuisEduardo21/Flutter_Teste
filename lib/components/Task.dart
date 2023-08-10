@@ -73,7 +73,40 @@ class _TaskState extends State<Task> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue),
                             onLongPress: () {
-                              TaskDao().delete(widget.nome);
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    backgroundColor: Colors.white,
+                                    title: Text(
+                                      'Deseja realmente deletar?',
+                                      style: TextStyle(color: Colors.blue),
+                                    ),
+                                    content: const Text(
+                                        "Depois de deletar a tarefa sumira!"),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context, 'Cancela'),
+                                        child: const Text(
+                                          'Cancelar',
+                                          style: TextStyle(color: Colors.red),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          TaskDao().delete(widget.nome);
+                                          Navigator.pop(context, 'Deleta');
+                                        },
+                                        child: const Text(
+                                          'Sim',
+                                          style: TextStyle(color: Colors.black54),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
                             },
                             onPressed: () {
                               setState(() {
