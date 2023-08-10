@@ -91,6 +91,7 @@ class _InitialScreenState extends State<InitialScreen> {
             }),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
         onPressed: () {
           Navigator.push(
             context,
@@ -103,7 +104,7 @@ class _InitialScreenState extends State<InitialScreen> {
                 print('Recarregando a tela inicia');
               }));
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, color: Colors.blue,),
       ),
     );
   }
